@@ -4,6 +4,7 @@
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage[version=3]{mhchem}
+\usepackage{preview}
 \let\oldce\ce
 \renewcommand*{\ce}[1]{\begingroup\color{blue}\oldce{#1}\endgroup}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -27,278 +28,360 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
-    	Skizzieren Sie die symmetrische und antisymmetrische Wellenfunktion eines 
-        homonuklearen zweiatomigen Moleküls. (anti/bindende Wellenfkt.)
-        }
+		Skizzieren Sie die symmetrische und antisymmetrische Wellenfunktion eines 
+		homonuklearen zweiatomigen Moleküls. (anti/bindende Wellenfkt.)
+		}
 		$\Psi_s=\frac{1}{\sqrt{2+2S_{AB}}}(\Phi_A+\Phi_B)$ \\
-        
+		
 		$\Psi_a=\frac{1}{\sqrt{2+2S_{AB}}}(\Phi_A-\Phi_B)$ \\
-        
+		
 		Mit "Überlappungsintegral": $S_{AB}=Re \int \Phi_A \Phi_B$ \\
-        
+		
 		Wellenfunktion Kern A: $ \Phi_A= \frac{1}{\sqrt{a_0^3}}e^{-\frac{r_A}{a_0}}$ \\
-        
-        Bohrscher Atomradius: $a_0$ \\
-        
-        $\Psi_s$ führt zu bindenden, $\Psi_a$ zu antibindenden Zustand
-        
-    \end{karte}
+		
+		Bohrscher Atomradius: $a_0$ \\
+		
+		$\Psi_s$ führt zu bindenden, $\Psi_a$ zu antibindenden Zustand
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{karte}{
-        Welche Überlegungen führen zur MO- und VB-Näherung?
-        }
-        	
-        Da das $\ce{H2}$ Molekül 2 Elektronen besitzt und man diese Wechselwirkung zwischen 
-        den Elektronen natürlich berücksichtigen muss, führt dies zu einer nicht mehr 
-        analytisch lösbaren Schrödingergleichung. 
-        (Separierung der SG wie beim $\ce{He^+}$ Molekül nicht mehr möglich) \\
+	\begin{karte}{
+		Welche Überlegungen führen zur MO- und VB-Näherung?
+		}
+			
+		Da das $\ce{H2}$ Molekül 2 Elektronen besitzt und man diese Wechselwirkung zwischen 
+		den Elektronen natürlich berücksichtigen muss, führt dies zu einer nicht mehr 
+		analytisch lösbaren Schrödingergleichung. 
+		(Separierung der SG wie beim $\ce{He^+}$ Molekül nicht mehr möglich)
 		Man muss also Näherungsmethoden finden.
-        
-        \begin{itemize}
-			\item Molekül-Orbital Näherung \\
-            
-        	Die Überlegung ist, dass das Molekül für Atomabstand $R \rightarrow \infty$ 
-        	in 2 $\ce{H}$ Atome im 1s Zustand zerfällt. 
-        	Man kann nun also einen Ansatz mit $\ce{H}$ 1s Wellenfunktionen machen und für 
-        	das ganze Molekül einen Produktansatz aus 2 dieser Funktionen 
-        	(für Atom A und Atom B) bilden.
-        	
-        	$\Psi_{\vec{r_1},\vec{r_2}} = \Psi_s(\vec{r_1})\Psi_s(\vec{r_2})$ symmetrisch bezüglich
-        	Vertauschung der Elektronen, aber aus dem Pauli Prinzip
-            folgt, dass die Gesamtwellenfunktion antisymmetrisch sein muss, also muss es 
-            einen antisymmetrischen Spinanteil in der Gesamtwellenfunktion geben:
-            
-            $\Psi(\vec{r_1},\vec{r_2},\vec{s_1},\vec{s_2})=
-            \Psi_s(\vec{r_1})\Psi_s(\vec{r_2})(\chi^+(1)\chi^-(2) - \chi^+(2)\chi^-(1))$
-            
-            Wobei man schreiben kann: 
-            $\chi^+ = \alpha$, $\chi^- = \beta$ 
-            (wobei $\alpha(1)$: $m_s(1) = +\frac{1}{2}$, $\beta(1): m_s(2) = -\frac{1}{2})$
-            
-            Wenn man nun noch die symmetrische Wellenfunktion 
-            $\chi^+ = \alpha$, $\chi^- = \beta$ 
-            (wobei 
-            $\alpha(1): m_s(1)= +\frac{1}{2}$, 
-            $\beta(1):  m_s(2)= -\frac{1}{2}$)
-            
-            Wenn mam nun die symmetrische Wellenfunktion 
-            $\Psi= \frac{1}{\sqrt{2+2S_{AB}}}(\Phi_A+\Phi_B)$
-            für die $\Psi_S(\vec{r_1} ) \Psi_S(\vec{r_2} )$ einsetzt und die Abkürzungen $\Phi_A=a$ und 
-            $\Phi_B=b$ einführt bekommt man für den räumlichen Anteil:
-            $  \Psi( \vec{r_1}, \vec{r_2} ) = \frac{1}{2+2S_{AB}} \left[ a(1)+b(1) \right]\left[ a(2)+b(2) \right]   $
-            
-        \item Valenzbindungs Näherung \\
-             
-            
+		
+		\begin{itemize}
+			\item Molekül-Orbital Näherung 
+			
+			Die Überlegung ist, dass das Molekül für Atomabstand $R \rightarrow \infty$ 
+			in 2 $\ce{H}$ Atome im 1s Zustand zerfällt. 
+			Man kann nun also einen Ansatz mit $\ce{H}$ 1s Wellenfunktionen machen und für 
+			das ganze Molekül einen Produktansatz aus 2 dieser Funktionen 
+			(für Atom A und Atom B) bilden.
+			
+			$\Psi_{\vec{r_1},\vec{r_2}} = \Psi_s(\vec{r_1})\Psi_s(\vec{r_2})$ symmetrisch bezüglich
+			Vertauschung der Elektronen, aber aus dem Pauli Prinzip
+			folgt, dass die Gesamtwellenfunktion antisymmetrisch sein muss, also muss es 
+			einen antisymmetrischen Spinanteil in der Gesamtwellenfunktion geben:
+			
+			$\Psi(\vec{r_1},\vec{r_2},\vec{s_1},\vec{s_2})=
+			\Psi_s(\vec{r_1})\Psi_s(\vec{r_2})(\chi^+(1)\chi^-(2) - \chi^+(2)\chi^-(1))$
+			
+			Wobei man schreiben kann: 
+			$\chi^+ = \alpha$, $\chi^- = \beta$ 
+			(wobei $\alpha(1)$: $m_s(1) = +\frac{1}{2}$, $\beta(1): m_s(2) = -\frac{1}{2})$
+			
+			Wenn man nun noch die symmetrische Wellenfunktion 
+			$\chi^+ = \alpha$, $\chi^- = \beta$ 
+			(wobei 
+			$\alpha(1): m_s(1)= +\frac{1}{2}$, 
+			$\beta(1):  m_s(2)= -\frac{1}{2}$)
+			
+			Wenn mam nun die symmetrische Wellenfunktion 
+			$\Psi= \frac{1}{\sqrt{2+2S_{AB}}}(\Phi_A+\Phi_B)$
+			für die $\Psi_S(\vec{r_1} ) \Psi_S(\vec{r_2} )$ einsetzt und die Abkürzungen $\Phi_A=a$ und 
+			$\Phi_B=b$ einführt bekommt man für den räumlichen Anteil:
+			$  \Psi( \vec{r_1}, \vec{r_2} ) = \frac{1}{2+2S_{AB}} \left[ a(1)+b(1) \right]\left[ a(2)+b(2) \right]   $
+			
+		\item Valenzbindungs Näherung 
+		
+		Die VB-Näherung geht auch vom Molekülorbitalmodell aus. 
+		Im untersten Orbital können sich dabei 2 Elektronen mit entgegengesetzten Spin aufhalten. 
+		Der Ansatz ist: \\ \\ \\
+		$\Psi_1 = c_1 \phi_A(1) \phi_B(2)$ 
+		was bedeutet, dass sich Elektron 1 an Kern A und Elektron 2 an Kern B befindet, 
+		aber wegen der Ununterscheidbarkeit kann auch 
+		$\Psi_2 = c_1 \phi_A(2) \phi_B(1)$
+		eine Lösung sein (Elektron 2 an Kern A und umgekehrt), also bildet man eine Linearkombination:
+		 
+		$\Psi_{S,A} = c[ \phi_A(1) \phi_B(2) \pm \phi_A(2) \phi_B(1) ] $ 
+			 
+			
 		\end{itemize}
-        
-    \end{karte}
-        
-        
+		
+	\end{karte}
+		
+		
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{karte}{
-        Vergleiche Molekülorbitale und Valenzbindungsmodelle (Heitler London Näherung).
-        }
-        
-        \begin{itemize}
+	\begin{karte}{
+		Vergleiche Molekülorbitale und Valenzbindungsmodelle (Heitler London Näherung).
+		}
+		
+		\begin{itemize}
 			\item Molekül-Orbital Näherung \\
 			
-            Die Idee ist, dass das Molekül für Atomabstand $R \rightarrow \infty$ in 2 
-            $\ce{H}$ Atome im 1s Zustand zerfällt. 
-            Man muss nun also einen Ansatz mit $\ce{H}$ 1s Wellenfunktionen machen und für 
-            das ganze Molekül einen Produktansatz aus 2 dieser Funktionen 
-            (für Atom A und Atom B) bilden. \\
-            Mit Beachtung des Pauli-Prinzips folgt dann:
-            $$\Psi_{\overrightarrow{r_1},\overrightarrow{r_2}} = 
-            \frac{1}{2+2S_{AB}}[a(1)+b(1)][a(2)+b(2)]$$
-            
-            \item Valenzbindungs Näherung \\
-             
-             Bei der VB geht man von Molekükorbitalen aus, also setzt man direkt eine Wellenfunktion für 2 Elektronen an. Durch die Forderung, dass die Wellenfunktion entweder symmetrisch oder antisymmetrisch ist, folgt der Ansatz einer Linearkombination beider möglichen Lösungen.
-             $ \Psi_1 = c_1\phi_A(1)\phi_B(2) $ und $ \Psi_2 = c_1\phi_A(2)\phi_B(1) $ zu
-             $$  \Psi_{S,A} = c \left[   \phi_A(1) \phi_B(2) \pm   \phi_A(2) \phi_B(1)   \right]  $$
-             
-             Wenn man die Klammern in der MO Gleichung ausmultipliziert, sieht man, dass im VB Ansatz die Terme, die beschreiben, dass sich beide Elektronen entweder an Kern A oder Kern B befinden, fehlen.
-             Jetzt ist dieser Zusand zwar unwahrscheinlicher als die anderen Zustände, wird aber in der MO mit gleicher Stärke berücksichtigt. Die VB berücksichtigt dafür diese Terme gar nicht.
-             Ansonsten sind die Näherungen gleich.
-            
+			Die Überlegung ist, dass das Molekül für Atomabstand $R \rightarrow \infty$ in 2 
+			$\ce{H}$ Atome im 1s Zustand zerfällt. 
+			Man muss nun also einen Ansatz mit $\ce{H}$ 1s Wellenfunktionen machen und für 
+			das ganze Molekül einen Produktansatz aus 2 dieser Funktionen 
+			(für Atom A und Atom B) bilden. \\
+			Mit Beachtung des Pauli-Prinzips folgt dann:
+			$$\Psi_{\overrightarrow{r_1},\overrightarrow{r_2}} = 
+			\frac{1}{2+2S_{AB}}[a(1)+b(1)][a(2)+b(2)]$$
+			
+			\item Valenzbindungs Näherung \\
+			 
+			 Bei der VB geht man von Molekükorbitalen aus, also setzt man direkt eine Wellenfunktion für 2 Elektronen an. Durch die Forderung, dass die Wellenfunktion entweder symmetrisch oder antisymmetrisch ist, folgt der Ansatz einer Linearkombination beider möglichen Lösungen.
+			 $ \Psi_1 = c_1\phi_A(1)\phi_B(2) $ und $ \Psi_2 = c_1\phi_A(2)\phi_B(1) $ zu
+			 $$  \Psi_{S,A} = c \left[   \phi_A(1) \phi_B(2) \pm   \phi_A(2) \phi_B(1)   \right]  $$
+			 
+			 Wenn man die Klammern in der MO Gleichung ausmultipliziert, sieht man, dass im VB Ansatz die Terme, die beschreiben, dass sich beide Elektronen entweder an Kern A oder Kern B befinden, fehlen.
+			 Jetzt ist dieser Zusand zwar unwahrscheinlicher als die anderen Zustände, wird aber in der MO mit gleicher Stärke berücksichtigt. Die VB berücksichtigt dafür diese Terme gar nicht.
+			 Ansonsten sind die Näherungen gleich.
+			
 		\end{itemize}
-        
-    \end{karte}
-    
-    
+		
+	\end{karte}
+	
+	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{karte}{
-        Erläutere die Verbesserung des MO-Ansatzes.
-        }
-    \end{karte}
-    
-    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{karte}{
-        Warum ist $\ce{He2+}$ stabil aber $\ce{He2}$ nicht?
-        }
-        
-        Beim $\ce{He2}$ werden die $2e$ im $1s \sigma_g$ Orbital (bindend) praktisch komplett durch die zwei $e^-$ im antibindenden $1s\sigma_u$ Orbital kompensiert
-                
-    \end{karte}
+	\begin{karte}{
+		Erläutere die Verbesserung des MO-Ansatzes.
+		}
 
-  
+		Der ionische Zustand der Wellenfunktion $\left(  (a(1)a(2) + b(1)b(2) \right) $
+		, der in VB gar nicht und in MO mit gleicher Stärke wie die anderen Terme vorkommt, wird über eienen Parameter $ 0 < \lambda < 1 $ in die Wellenfunktion eingebaut.
+		$$ \Psi = c[ a(1)b(2) + a(2)b(1) + \lambda[ a(1)a(2) + b(1)b(2) ] ] $$
+		Wenn man nun $\lambda$ so variiert, dass man für jeden Kernabstand $R$ eine minimale Gesamtenergie $E(R)$ erhält, bekommt man eine Bindungsenergie $ \Delta E(R_e) = -4.02eV $, was schon sehr viel besser dem realen Wert enstspricht.
+		Man kann nun aber noch beachten, dass sich die Atomorbitale bei der Annäherung der $\ce[H]$ Atome verformen. Deshalb setzt man statt 
+		$$ \Psi_S = \frac{1}{\sqrt{2+2S_{AB}}} (\phi_A + \phi_B) $$
+		eine Linearkombination aus $N$ atomaren Orbitalen ein:
+		$$ \Psi = \sum_{i=1}^{N} c_i\phi_i $$
+		
+		Als Molekülorbital kann man dann entweder einen MO Ansatz $$\Psi = \Psi_1 \Psi_2$$
+		
+		oder einen VB Ansatz wählen $$ \Psi = \sum_{i,k} c_i\phi_i(1)c_k\phi_k(2) $$
+		
+		In beiden Fällen versucht man dann durch variieren der Koeffizienten die Gesamtenergie für jeden Kernabstand zu minimieren. Mit diesem Ansatz kommt man experimentellen Wert dann bereits sehr nahe.
+		
+	\end{karte}
+	
+	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{karte}{
-        Warum ist das $\ce{H2}$ Molekül, nicht aber das $\ce{He2}$ Molekül stabil?
-        }
-    \end{karte}
-  
-  
+	\begin{karte}{
+		Warum ist $\ce{He2+}$ stabil aber $\ce{He2}$ nicht?
+		}
+		
+		Beim $\ce{He2}$ werden die $2e$ im $1s \sigma_g$ Orbital (bindend) praktisch komplett durch die zwei $e^-$ im antibindenden $1s\sigma_u$ Orbital kompensiert. 
+		Es gibt aber $\ce{He2^*}$ bei dem ein $e^-$ im $1s\sigma_u$ angeregt wird. 
+		Dieses ist wieder stabil. \\
+		
+		Beim $\ce{He2^+}$ fehlt ein $e^-$ und es kann deshalb zu keiner totalen Kompensation der Bindung kommen und damit ist es auch stabil.
+				
+	\end{karte}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{karte}{
-        Diskutieren Sie die Bindung im $\ce{Na2}$ Molekül.
-        }
-    \end{karte}
-  
-  
+	\begin{karte}{
+		Warum ist das $\ce{H2}$ Molekül, nicht aber das $\ce{He2}$ Molekül stabil?
+		}
+		
+		Das $\ce{He}$ Molekül besitzt $2e$ im $1s\sigma_g$ Orbit. \\
+		Beim $ \ce{He2} $ hat man aber $2e$ im $1s \sigma_g$ und $2e$ im $1s\sigma_u$. \\
+		Diese kompensieren sich und das Molekül ist, im Gegensatz zu $\ce{H2}$, nicht stabil.
+		
+	\end{karte}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{karte}{
-        Diskutieren Sie die Bindung im $\ce{Li2}$ und $\ce{CH4}$ Molekül.
-        }
-    \end{karte}
-  
-  
+	\begin{karte}{
+		Diskutieren Sie die Bindung im $\ce{Na2}$ Molekül.
+		}
+		
+
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.5\linewidth]{./images/07_Na2}
+			\caption[Na2]{$Na_2: [K][K]  (2s \sigma_g)^2 (2s \sigma_u)^2  (2 \sigma \pi_u)^6 (2 \sigma \pi_g)^6 (3s \sigma_g)^2  $}
+			\label{fig:07_Na2}
+		\end{figure}
+
+		
+	\end{karte}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{karte}{
-        Diskutiere die chemische Bindung im $\ce{B2}$ Modell.
-        }
-    \end{karte}
-  
-  
+	\begin{karte}{
+		Diskutieren Sie die Bindung im $\ce{Li2}$ und $\ce{CH4}$ Molekül.
+		}
+		
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.3\linewidth]{./images/08_Li2}
+			\caption[Li2]{$Li_2: [K][K]  (1s \sigma_g)^2 (1s \sigma_u)^2  (2s \sigma_g )^2   $}
+			\label{fig:07_Na2}
+		\end{figure}
+		
+	\end{karte}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \begin{karte}{
-        Molekülbindungsarten? (kovalente, ionische, Valenzbindung)
-        }
-    \end{karte}
-  
-  
+	\begin{karte}{
+		Diskutiere die chemische Bindung im $\ce{B2}$ Modell.
+		}
+		
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.3\linewidth]{./images/09_B2}
+			\caption[Li2]{$B_2: [K][K]  (2s \sigma_g)^2 (2s \sigma_u)^2  (2p \pi_u )^2   $}
+			\label{fig:07_Na2}
+		\end{figure}
+		
+	\end{karte}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{karte}{
+		Molekülbindungsarten? (kovalente, ionische, Valenzbindung)
+		}
+		
+		\begin{itemize}
+			\item Kovalente Bindung \\
+				Erfolgt durch den Austausch gemeinsamer Elektronen zwischen den 2 Atomen und führt zu einer Umordnung der Elektronendichteverteilung. \\
+				Coulomb Wechselwirkung, \\
+				Austausch Wechselwirkung, \\
+				nur bei Kernabständen $ R<r_1+r_2 $
+				
+			\item Ionenbindung \\
+				Bindung zwischen negativen und positiven Ionen. Sie tritt auf, wenn es durch Elektronenaustausch zu einer erhöhten Elektronendichte in Atom A und einer geringeren an Atom B kommt.\\
+				Fällt mit $ \dfrac{1}{R} $ ab, also langreichweitig.
+			\item Van der Waals Bindung \\
+				Zwischen 2 neutralen polarisierbaren Atomen.\\
+				Es bildet sich ein Dipol und dies führt zu einer schwachen und kurzreichweitigen Bindung. \\
+				$\dfrac{1}{R^6}$
+			\item Wasserstoff-Brücken Bindung \\
+				Anziehung zwischen 2 Atomen durch ein $\ce{H+}$ Ion. \\
+				Das Proton polarisiert die beiden Atome und dies führt zu einer anziehenden Kraft.
+		\end{itemize}
+		
+	\end{karte}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Beschreiben sie die Elemente der Born-Openheimer Näherung.
-        }
-          
-          
-          
-    \end{karte}
+		}
+		
+		Näherung 
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Beschreibe die Rotation zweiatomiger Moleküle.
-        }
-          
-          
-          
-    \end{karte}
+		}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Vorteile Morse-Potential gegnüber harmonischem Potential.
-        }
-          
-          
-          
-    \end{karte}
+		}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Wovon hängt die Intensität einer Spektrallinie ab?
-        }
-          
-          
-          
-    \end{karte}
+		}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Diskutiere das Schwingungs-Rotations-Spektrum bei zweiatomigen Molekülen.
-        }
-          
-          
-          
-    \end{karte}
+		}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Wovon hängt die Intensität bei einmen elektronischen Übergang ab?
-        }
-          
-          
-          
-    \end{karte}
+		}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Franck-Condon-Prinzip und Intensität des Schwingungsüberganges.
-        }
-          
-          
-          
-    \end{karte}
+		}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Diskutiere den Aufbau eines $\ce{H2O}$ Molekül.
-        }
-          
-          
-          
-    \end{karte}
+		}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Diskutiere den Aufbau eines $\ce{CH4}$ Moleküls im Rahmen der Molekularorbitalnäherung.
-        }
-          
-          
-          
-    \end{karte}
+		}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Beschreibe das $\ce{NH3}$ Molekül.
-        }
-          
-          
-          
-    \end{karte}
+		}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Erklären Sie die Hybridisierung anhand des Benzol-Molekül.
-        }
-          
-          
-          
-    \end{karte}
+		}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Was sind die Normalkoordinaten bei der Beschreibung der Schwingungen mehratomiger Moleküle?
-        }
-          
-          
-          
-    \end{karte}
+		}
+		
+		
+		
+	\end{karte}
 
 
 
@@ -314,216 +397,216 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Festkörperbindungsarten? (Diskutiere die metallische Bindung.)
-        }
-          
-          
-          
-    \end{karte}
+		}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Graphit versus Diamant: Wodurch unterscheidet sich die chemische Bindung in diesen
-        beiden Festkörpern?
+		beiden Festkörpern?
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Unterschied zwischen fcc und hcp?
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Vergleiche bcc- und fcc-Gitter.
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Unterschied starres / zeitlich veränderliches Gitter.
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Definition und Vorteile des reziproken Gitters.
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Erkäre die Laue-Bedingung mit \\
-        a) Ewaldschen Konstruktion \\
-        b) Bragg-Reflexion.
+		a) Ewaldschen Konstruktion \\
+		b) Bragg-Reflexion.
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Skizziere die Brillouinschen-Zonen eines Parallelogrammgitters.
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Skizziere die Brillouinsche Zone eines 2D hexagonalen Gitters.
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Strukturfaktor / Atomfaktor.
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Unterschiede im Strukturfaktor im einfachen kubischen und im bcc-Gitter?
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Was führt zum Auslöschen bestimmter Reflexe in eimen bcc?
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Dispersionsrelation einer zweiatomigen linearen Kette. (Phononendispersion)
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Unterschied akustische und optische Phononen.
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Wodurch unterscheiden sich die Dispersionsrelationen für Phononen im primitiv 
-        kubischen Gitter und der $\ce{CsCl}$ Struktur (bcc kub. raumzentriert.)?
+		kubischen Gitter und der $\ce{CsCl}$ Struktur (bcc kub. raumzentriert.)?
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Zustandsdichte vom freien Elektronengases?
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Fermi-Verteilung für T = 0K und bei endlichen Temperaturen.
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Entstehung elektronischer Bänder im Festkörper.
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Bildung elektronischer Bänder mit der Methode des ”stark gebundenen“ Elektrons. 
-        (”tight binding“ Näherung)
+		(”tight binding“ Näherung)
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Wovon hängt die Breite von elektronischen Bändern ab?
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Wann ist ein Festkörper Leiter bzw. Nichtleiter?
 		}
-          
-          
-          
-    \end{karte}
+		
+		
+		
+	\end{karte}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
