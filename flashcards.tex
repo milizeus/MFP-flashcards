@@ -2,11 +2,12 @@
 \usepackage[german]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage[version=3]{mhchem}
 \usepackage{preview}
 \let\oldce\ce
-\renewcommand*{\ce}[1]{\begingroup\color{blue}\oldce{#1}\endgroup}
+\renewcommand*{\ce}[1]{\begingroup\color{red}\oldce{#1}\endgroup}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -269,7 +270,18 @@
 		Beschreiben sie die Elemente der Born-Openheimer Näherung.
 		}
 		
-		Näherung 
+		Näherung zur Berücksichtigung nicht starrer Moleküle. \\
+		
+		Wegen der viel größeren Masse der Kerne läuft deren Bewegung viel langsamer als die der Elektronen ab. Die Elektronen könne sich praktisch instantan auf den Kernanstand einstellen.\\
+		
+		Weiters hängt die Elektronenenergie zwar von $R$ ab, wird aber durch die Bewegung des Kerns kaum beeinflusst. \\
+		
+		Die Wellenfunktion lässt sich dadurch als Produkt aus Kern- und Elektronenwellenfunktion schreiben. \\
+		
+		Beim Einsetzen in die SG erhällt man dann die Gleichung für die elektronische Wellenfunktion des starren Moleküls und eine Gleichung für die Bewegung des Kerns in einem Potential. \\
+		
+		Diese Näherung ist nur für schwere Moleküle im Grundzustand geeignet.
+		
 		
 	\end{karte}
 
@@ -279,17 +291,43 @@
 		Beschreibe die Rotation zweiatomiger Moleküle.
 		}
 		
+		Quasiklassischer Ansatz: Rotation um Achse durch den Schwerpunkt. \\
+		Bei Massen $M_1$, $M_2$ und Winkelgeschwindigkeit $\omega$ ist die Rotationsenergie 
+		$$E_{rot} = \frac{1}{2} I \omega^2 = \frac{\vec{J}^2}{2 I}$$
 		
+		mit \\
+		$ |\vec{J}|=I \omega  $ \\
+		$ I = M_1 R_1^2 + M_2 R_2^2 = M R^2 $
+		
+		wobei \\
+		$ M = \frac{M_1 M_2}{M_1 + M_2} $ „reduzierte Masse“ \\
+		und \\
+		$ |\vec{J}^2| = J(J+1){\hslash}^2 $ aus QM, \\
+		erhällt man beim Gleichgewichtsabstand $ R = R_e $ \\
+		
+		$$ E_{rot} = \frac{J(J+1)\hslash^2}{2 M R_e^2}  $$
+		
+		Es kann damit nur diskrete Abstände der Rotationsenergieniveaus geben:
+		
+		$$       \Delta E_{rot} = E_{rot} (J+1) - E_{rot} (J) = \frac{( J+1 ) \hslash^2 }{ I }       $$
 		
 	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
-		Vorteile Morse-Potential gegnüber harmonischem Potential.
+		Vorteile Morse-Potential gegenüber harmonischem Potential.
 		}
 		
-		
+		\begin{itemize}
+			\item harmonisches Potential \\
+				Das harmonische Potential beschreibt mit seiner Parabelform zwar gut das Potential eines rotierenden Moleküls in der Nähe des Gleichgewichtabstandes $R=R_e$, aber für höhere Energien ist die Näherung nicht besinders gut, da das harmonische Potential für $R \rightarrow \infty$ gegen $ E \rightarrow \infty $ strebt, obwohl es eigentlich gegen die Dissoziationsenergie $E_D$ konvergieren sollte.
+				
+			\item Morse-Potential \\
+				Das Morse-Potential ist besser, da es näher am wirklichen Potential liegt und darüber hinaus, noch immer analytisch lösbar ist. Es konvergiert auch wirklich gegen $E_D$ und besitzt ein Minimum bei $R=R_e$
+				$$ E_{pot}(R) = E_D[ 1-e^{ -a( R-R_e ) } ]^2 $$
+				
+		\end{itemize}
 		
 	\end{karte}
 
@@ -299,7 +337,11 @@
 		Wovon hängt die Intensität einer Spektrallinie ab?
 		}
 		
+		Die Intensität hängt von der Übergangswahrscheinlichkeit ab.
 		
+		Je höher die Wahrscheinlichkeit, desto intensiver die Linien.
+		
+		Intensität $\propto$ Übergangswahrscheinlichkeit $\propto$ $|M_{ij}|^2$ „Übergangsmatrixelement“
 		
 	\end{karte}
 
@@ -309,17 +351,33 @@
 		Diskutiere das Schwingungs-Rotations-Spektrum bei zweiatomigen Molekülen.
 		}
 		
-		
+		Übergänge zwischen Schwingungs-Rotations Niveaus $ (v_i, \vec{J}_i ) $ und $ (v_j, \vec{J}_j ) $ innerhalb des selben elektronischen Zustandes bilden für $ v_i \neq v_j $ das Schwingungs-Rotations Spektrum, das im infraroten Spektralbereich liegt (bei $ v_i = v_j $ nur Rotationsspektrum im Mikrowellenbereich)
 		
 	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
-		Wovon hängt die Intensität bei einmen elektronischen Übergang ab?
+		Wovon hängt die Intensität bei einem elektronischen Übergang ab?
 		}
 		
+		Da die Übergangswahrscheinlichkeit $ \propto |\vec{M_{ik}}|^2 $ ist, ist die Intensität $ I \propto |\vec{M_{ik}^{el}|^2 FC(v_i, v_k) HL(J_i, J_k)  $. \\
+		Wobei die einzelnen Faktoren folgendes sind: \\
 		
+		\begin{itemize}
+			\item Der elektronische Anteil $ |\vec{M_{ik}}|^2 $ der die Wahrscheinlichkeit für einen Elektronenübergang von $ | i > $ nach $ |k> $ angibt. Dieser Teil hängt vom Überlapp der elektronischen Wellenfunktion ab.
+			
+			\item Der Frank-Condon-Faktor
+			$$  FC(v_i,v_j) = \left|    \int  \psi_{vib}(v_i)    \psi_{vib}(v_k)  dR  \right| ^2     $$
+			der gleich dem Absolutquadrat des Überlapps der Schwingungswellenfunktionen im oberen und unteren Zustand ist.
+			
+			\item Der Hönl-London-Faktor
+			$$   HL(  J_i, J_k  )  =  \left|    \int Y_{J_{i}}^{ M_i }    Y_{J_{k}}^{ M_k } \vec{p} \sin(\theta) d\theta d\phi    \right|^2    $$
+			der gleich dem Absolutquatrat des Überlapps der Rotationswellenfunktionen im oberen und unteren Zustand ist.
+			
+		\end{itemize}
+		
+		Bem.: Nur wenn keiner der Faktoren 0 ist kann ein elektronischer Überlapp stattfinden.
 		
 	\end{karte}
 
