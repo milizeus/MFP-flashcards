@@ -1,11 +1,14 @@
-\documentclass[a5paper,12pt,ngerman,print,grid=front]{kartei}
+\documentclass[a5paper,12pt,ngerman,grid=front %
+%,toc %
+,print
+]{kartei}
+\usepackage{hyperref}
 \usepackage[german]{babel}
 \usepackage[utf8x]{inputenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage[version=3]{mhchem}
-\usepackage{preview}
 \usepackage{gensymb}
 \let\oldce\ce
 \renewcommand*{\ce}[1]{\begingroup\color{red}\oldce{#1}\endgroup}
@@ -18,11 +21,11 @@
 
 
 \begin{document}
-
+\setcardpagelayout
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Molekülphysik}
+\section*{Molek"ulphysik}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -202,7 +205,6 @@
 			\centering
 			\includegraphics[width=0.5\linewidth]{./images/07_Na2}
 			\caption[Na2]{$Na_2: [K][K]  (2s \sigma_g)^2 (2s \sigma_u)^2  (2 \sigma \pi_u)^6 (2 \sigma \pi_g)^6 (3s \sigma_g)^2  $}
-			\label{fig:07_Na2}
 		\end{figure}
 
 		
@@ -218,7 +220,6 @@
 			\centering
 			\includegraphics[width=0.3\linewidth]{./images/08_Li2}
 			\caption[Li2]{$Li_2: [K][K]  (1s \sigma_g)^2 (1s \sigma_u)^2  (2s \sigma_g )^2   $}
-			\label{fig:07_Na2}
 		\end{figure}
 		
 	\end{karte}
@@ -233,7 +234,6 @@
 			\centering
 			\includegraphics[width=0.3\linewidth]{./images/09_B2}
 			\caption[Li2]{$B_2: [K][K]  (2s \sigma_g)^2 (2s \sigma_u)^2  (2p \pi_u )^2   $}
-			\label{fig:07_Na2}
 		\end{figure}
 		
 	\end{karte}
@@ -394,7 +394,6 @@
 			\centering
 			\includegraphics[width=0.4\linewidth]{./images/17_FCP}
 			\caption{Franck-Condon-Prinzip}
-			\label{fig:17_FCP}
 		\end{figure}
 		
 		
@@ -414,12 +413,6 @@
 		
 		Die Erklärung ist, dass sich die Elektronenhüllen der Atome bei der Bindung verformen und es dadurch zu einer veränderten Ladungsverteilung und einem größeren Überlapp der Wellenfunktionen kommt. Es bilden sich sogenante Hypbridorbitale für die die Bindungsenergie zwischen $\ce{H}$ und $\ce{O}$ maximal und die Gesamtenergie minimal wird. Dieser Ansatz erklärt auch den Bindugswinkel von $105\degree$.
 		
-		\begin{figure}[htbp]
-			\centering
-			\includegraphics[width=0.2\linewidth]{./images/18_CH4}
-			\caption{$\ce{CH4}$ Molekül , $109.5\degree$ }
-			\label{fig:18_CH4}
-		\end{figure}
 		
 	\end{karte}
 
@@ -429,7 +422,24 @@
 		Diskutiere den Aufbau eines $\ce{CH4}$ Moleküls im Rahmen der Molekularorbitalnäherung.
 		}
 		
-		
+		\begin{figure}[htdp]%
+			\centering
+			\begin{minipage}{0.3\textwidth}%
+				\centering%
+				\includegraphics[width=\textwidth]%
+				{./images/18_CH4}
+				\caption{$\ce{CH4}$}
+			\end{minipage}%
+			\hspace{0.5cm}
+			%
+			\begin{minipage}{0.3\textwidth}%
+				\centering
+				\includegraphics[width=\textwidth]%
+				{./images/18_CH4_2}
+				\caption{$\ce{CH4}$}
+			\end{minipage}%
+			%
+		\end{figure}
 		
 	\end{karte}
 
@@ -439,7 +449,19 @@
 		Beschreibe das $\ce{NH3}$ Molekül.
 		}
 		
+		Das $\ce{N}$ Atom hat 3 ungepaarte $2p$ Elektronen in den 3 $p$ Orbitalen $( p_x, p_y, p_z )$. 
+		Also sollte sich eingentlich mit den $1s$ Orbitalen der $ \ce{H} $ Atome ein Bindungswinkel von $90\degree$ ergeben.
+		Wie auch bei $ \ce{H2O} $ wird aber der Winkel durch Hybritisierung vergrößert. $ (107.8\degree) $.
+		Die Struktur des Moleküls entspricht einer dreiseitigen Pyramide. \\
 		
+		Die potentielle Energie als Funktion der Höhe $h$ hat ein Maximum bei $ h=0 $ und jeweils ein Minimum bei $ h = \pm h_0 $. 
+		Damit kann sich das $\ce{N}$ Atom entweder oberhalb oder unterhalb der Ebene befinden. Da diese Konfigurationen aber äquivalent sind, sind sie ununterscheidbar.
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=0.45\linewidth]{./images/20_NH3}
+			\caption{$ \ce{NH3} $}
+		\end{figure}
 		
 	\end{karte}
 
@@ -449,7 +471,30 @@
 		Erklären Sie die Hybridisierung anhand des Benzol-Molekül.
 		}
 		
+		Aus Experimenten kennt man den Aufbau des Benzol $ \ce{C6H6} $ Moleküls. Es bildet ein planares Molekül wobei die $\ce{C}$ Atome ein Sechseck bilden, an je ein $\ce{H}$ Atom gebunden ist.
 		
+		Der Winkel zwischen den $\ce{C}$ Atomen ist $120\degree$, dies weißt auf eine $sp^2$ Hybritisierung der Elektronen der $\ce{C}$ Atome hin.
+		
+		Man hat dabei also $sp^2$ Bindungen zwischen $ \ce{C-C} $ und $ \ce{C-H} $ aber auch delokalisierte $\pi$-Orbitale, die sich über den ganzen $\ce{C}$ Ring erstrecken.
+		
+		\begin{figure}[htdp]%
+			\centering
+			\begin{minipage}{0.35\textwidth}%
+				\centering%
+				\includegraphics[width=\textwidth]%
+				{./images/21_C6H6}
+				\caption{$\ce{CH4}$}
+			\end{minipage}%
+			\hspace{0.5cm}
+			%
+			\begin{minipage}{0.35\textwidth}%
+				\centering
+				\includegraphics[width=\textwidth]%
+				{./images/21_C6H6_hyb}
+				\caption{$\ce{CH4}$ Hybritisierung}
+			\end{minipage}%
+			%
+		\end{figure}
 		
 	\end{karte}
 
@@ -459,7 +504,13 @@
 		Was sind die Normalkoordinaten bei der Beschreibung der Schwingungen mehratomiger Moleküle?
 		}
 		
+		Koordinaten $Q$, die Schwingungen in einem mehratomigen Molekül beschreiben ohne den Schwerpunkt zu verändern.
 		
+		Sie beschreiben den Abstand vom Gleichgewichtsabstand.
+		
+		Definition über potentielle Energie:
+		
+		$$  U = \frac{1}{2} \sum_i \lambda_i Q_i  $$
 		
 	\end{karte}
 

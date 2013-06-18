@@ -1,34 +1,41 @@
 %
-%		* ----------------------------------------------------------------------------
-%		* "THE BEER-WARE LICENSE" (Revision 42/023):
-%		* Ronny Bergmann <mail@rbergmann.info> wrote this file. As long as you retain
-%		* this notice you can do whatever you want with this stuff. If we meet some day,
-%		* and you think  this stuff is worth it, you can buy me a beer or a coffee in return. 
-%		* ----------------------------------------------------------------------------
+%    * ----------------------------------------------------------------
+%    * "THE BEER-WARE LICENSE" (Revision 42/023):
+%    * Ronny Bergmann <mail@rbergmann.info> wrote this file. As long as
+%    * you retain this notice you can do whatever you want with this
+%    * stuff. If we meet some day and you think this stuff is worth it,
+%    * you can buy me a beer or a coffee in return.
+%    * ----------------------------------------------------------------
 %
 %
-% Dokumentklasse für Karteikarten im Format DinA5 bis DinA9
-% -- Version 1.8b --
+% Kartei Source Code of A5 page style definition without rotation
 %
-% Der Code sollte umfassend kommentiert sein, zur Verwendung, Eläuterung der einzelnen
-% Klassenoptionen, siehe manual.pdf
+%   -- Version 1.9 --
 %
-% Working on an english manual, should be available soon.
-
+% Last Change: Kartei 1.9, 2012/01/04
+%
+% An english manual will be available soon, up to that, at least all
+% comments are in english
+%
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kartei}[2011/12/31 Karteikarten in LaTeX, Version 1.8b2]
+\ProvidesClass{kartei}[2012/01/04 Karteikarten in LaTeX, Version 1.9]
 \newcommand{\setcardpagelayout}{}
 
 \makeatletter
 %
 \maxdeadcycles=1000
 %
-% lokale Variablen und Optionsträger 
+% lokale Variablen und Optionsträger
 %
 %Print Version oder nicht ?
 \newif\ifcard@useprint%
 %Standard: Kein Print
 \card@useprintfalse%
+
+%TOC Version oder nicht ?
+\newif\ifcard@useTOC%
+%Standard: Kein Print
+\card@useTOCfalse%
 
 % Card Sizes
 % 0 = DIN A5
@@ -37,14 +44,14 @@
 % 3 = DIN A8
 % 4 = DIN A9
 \newcount\card@papersize
-%Standard: A6 
+%Standard: A6
 \card@papersize=1%
 
 % Rotation der Rückseite
 % 0 = nicht gedreht
 % 1 = 180° gedreht (überkopf)
 \newcount\card@Rearsiderotation
-%Standard: 0 Degree, nicht überkopf 
+%Standard: 0 Degree, nicht überkopf
 \card@Rearsiderotation=0%
 
 %
@@ -58,7 +65,11 @@
 \newif\ifcard@useReargrid
 %Standard -> vorne kein Gitter
 \card@useReargridtrue%
-
+% Offsets
+\newlength{\card@hoffset}
+\newlength{\card@voffset}
+\setlength{\card@hoffset}{0pt}
+\setlength{\card@voffset}{0pt}
 %
 %-----------------
 %
@@ -74,30 +85,39 @@
 \DeclareOption{print}{%
 	\card@useprinttrue
 }%
+%TOC output
+\DeclareOption{toc}{%
+	\card@useTOCtrue
+}%
 %A6 Cards
 \DeclareOption{a5paper}{%
 	\card@papersize=0%
-	\PassOptionsToPackage{paper=a5,pagesize}{typearea}% 
+	\PassOptionsToPackage{paper=a5,pagesize}{typearea}%
+	\setlength{\card@hoffset}{-28pt}\setlength{\card@voffset}{55pt}%
 }
 %A6 Cards
 \DeclareOption{a6paper}{%
 	\card@papersize=1%
-	\PassOptionsToPackage{paper=a6,pagesize}{typearea}% 
+	\PassOptionsToPackage{paper=a6,pagesize}{typearea}%
+	\setlength{\card@hoffset}{-28pt}\setlength{\card@voffset}{37.5pt}%
 }
 %A7 Cards
 \DeclareOption{a7paper}{%
 	\card@papersize=2%
-	\PassOptionsToPackage{paper=a7,pagesize}{typearea}% 
+	\PassOptionsToPackage{paper=a7,pagesize}{typearea}%
+	\setlength{\card@hoffset}{-33.75pt}\setlength{\card@voffset}{37pt}%
 }%
 %A8 Cards
 \DeclareOption{a8paper}{
 	\card@papersize=3%
-	\PassOptionsToPackage{paper=a8,pagesize}{typearea}% 
+	\PassOptionsToPackage{paper=a8,pagesize}{typearea}%
+	\setlength{\card@hoffset}{-33.75pt}\setlength{\card@voffset}{37pt}%
 }%	
 %A9 Cards
 \DeclareOption{a9paper}{
 	\card@papersize=4%
-	\PassOptionsToPackage{paper=a9,pagesize}{typearea}% 
+	\PassOptionsToPackage{paper=a9,pagesize}{typearea}%
+	\setlength{\card@hoffset}{-36pt}\setlength{\card@voffset}{36.5pt}%
 }
 % Activate both grids
 \DeclareOption{grid=both}{%
@@ -121,21 +141,31 @@
 }
 %All unknown Options to article
 \DeclareOption*{%
-\PassOptionsToClass{\CurrentOption}{scrartcl}% 
+\PassOptionsToClass{\CurrentOption}{scrartcl}%
 }
 \ProcessOptions\relax
 %
 % Pakete laden
 %
-\PassOptionsToClass{twoside}{scrartcl}% 
-\PassOptionsToClass{cleardoublepage=plain,DIV=calc}{scrartcl}% 
+\PassOptionsToClass{twoside}{scrartcl}%
+\PassOptionsToClass{cleardoublepage=plain,DIV=calc}{scrartcl}%
 \LoadClass{scrartcl}
 \RequirePackage[headsepline]{scrpage2}
 \RequirePackage{xargs}
 \RequirePackage[landscape]{geometry}
+%
+% Packages rewquired for the print option
+%
 \RequirePackage{pgfpages,tikz}
 \RequirePackage{ifthen}
 \RequirePackage{atbegshi}
+%
+% Packages required for the TOC option
+%
+\RequirePackage{longtable}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{calc}
 %
 % Defining page style and margins
 %
@@ -151,105 +181,30 @@
 		\geometry{left=.5em,top=2em,right=.5em,bottom=1em,head=1.3\baselineskip, headsep=.7\baselineskip,footskip=1em}%
 	\fi%
 %
+% Load toc Commands
 %
-% grids
+\ifcard@useTOC
+  \input{kartei.tableofcontents}
+\fi
 %
-%
-\AtBeginShipout{%
-\setbox\AtBeginShipoutBox\hbox{
-	\ifthenelse{\isodd{\thepage}}%
-	{%
-		\begin{tikzpicture}[remember picture,yshift=-3in]%
-			\path [use as bounding box] node [inner sep=0pt,outer sep=0pt] (A) {\box\AtBeginShipoutBox};
-			\ifcard@useFrontgrid%
-				%vertical lines
-				\draw[front grid] (-.5in-.5\paperwidth,-.5\paperheight+.5225in) -- (-.5in-.5\paperwidth,.5\paperheight+.5225in);%
-				% horizontal lines
-				\draw[front grid] (-.5\paperwidth-.5in,-.5\paperheight+.515in) -- (.5\paperwidth-.5in,-.5\paperheight+.515in);%
-			\fi%
-		\end{tikzpicture}%
-	}%
-	{%
-		\begin{tikzpicture}[remember picture]%
-			\path [use as bounding box] node [inner sep=0pt,outer sep=0pt] (A) {\box\AtBeginShipoutBox};
-			\ifcard@useReargrid%
-				% vertical lines
-				\draw[rear grid] (-.5in-.5\paperwidth,-.5\paperheight+.5225in) -- (-.5in-.5\paperwidth,.5\paperheight+.5225in);%
-				% horizontal lines
-				\draw[rear grid] (-.5\paperwidth-.5in,-.5\paperheight+.5225in) -- (.5\paperwidth-.5in,-.5\paperheight+.5225in);%
-			\fi%
-		\end{tikzpicture}%
-	}%
-}}
-%
+% Load print Commands
 \ifcard@useprint%
-	\ifcase \card@papersize%
-	%0 is A5
-			\ifcase \card@Rearsiderotation% no rotation =0
-				\renewcommand{\setcardpagelayout}{\pgfpagesuselayout{cardprintA5}[a4paper, border shrink=0mm]}%
-			\or %rotate=1
-				\renewcommand{\setcardpagelayout}{\pgfpagesuselayout{cardprintA5rotation}[a4paper, border shrink=0mm]}%
-			\fi
-		\or
-	%1 is A6
-			\ifcase \card@Rearsiderotation% no rotation =0
-				\renewcommand{\setcardpagelayout}{\pgfpagesuselayout{cardprintA6}[a4paper, landscape, border shrink=0mm]}%
-			\or %rotate=1
-				\renewcommand{\setcardpagelayout}{\pgfpagesuselayout{cardprintA6rotation}[a4paper, landscape, border shrink=0mm]}%
-			\fi
-		\or
-	%DIN A7 because 2
-			\ifcase \card@Rearsiderotation% no rotation =0
-				\renewcommand{\setcardpagelayout}{\pgfpagesuselayout{cardprintA7}[a4paper, border shrink=0mm]}%
-			\or %rotate=1
-				\renewcommand{\setcardpagelayout}{\pgfpagesuselayout{cardprintA7rotation}[a4paper, border shrink=0mm]}%
-			\fi
-		\or
-		%DIN A8 because 3
-			\ifcase \card@Rearsiderotation% no rotation =0
-				\renewcommand{\setcardpagelayout}{\pgfpagesuselayout{cardprintA8}[a4paper, landscape, border shrink=0mm]}%
-			\or %rotate=1
-				\renewcommand{\setcardpagelayout}{\pgfpagesuselayout{cardprintA8rotation}[a4paper, landscape, border shrink=0mm]}%
-			\fi
-		\or
-		%DIN A9 because 4
-			\ifcase \card@Rearsiderotation% no rotation =0
-				\renewcommand{\setcardpagelayout}{\pgfpagesuselayout{cardprintA9}[a4paper, border shrink=0mm]}%
-			\or %rotate=1
-				\renewcommand{\setcardpagelayout}{\pgfpagesuselayout{cardprintA9rotation}[a4paper, border shrink=0mm]}%
-			\fi
-	\fi
-\else%
-	\renewcommand{\setcardpagelayout}{} % no print
+  \input{kartei.print}
 \fi%
-\input{kartei_pageshipout.tex}
-
-\input{kartei_a5printstyle}
-\input{kartei_a5printstylerotation}
-\input{kartei_a6printstyle}
-\input{kartei_a6printstylerotation}
-\input{kartei_a7printstyle}
-\input{kartei_a7printstylerotation}
-\input{kartei_a8printstyle}
-\input{kartei_a8printstylerotation}
-\input{kartei_a9printstyle}
-\input{kartei_a9printstylerotation}
-
 %
 % -----------------
-% Eigene Felder und Befehler
+% Main Commands 
 % -----------------
 %
-
+\makeatletter
 %
-% Antwort (Standard Rückseite Mitte
+% Antwort
 % Answer
 \newcommand{\dieantwort}{%
 \antwortstil{\card@antwort}\relax%
 }
 \newcommand{\antwort}[1]{\def\card@antwort{#1}}%
 \newcommand{\antwortstil}{}
-%Expliziter Standard: leer (Antwort wird am Ende des Dokumentes gesetzt
 \global\let\card@antwort\@empty
 
 %english names
@@ -261,7 +216,7 @@
 \let\answerstyle=\antwortstil
 
 %
-% Fach (Standard vorne links)
+% Fach
 % CardSubject
 \newcommand{\dasfach}[1]{%
 \ifx\@empty#1%
@@ -272,7 +227,6 @@
 }
 \newcommand{\fach}[1]{\def\card@fach{#1}}%
 \newcommand{\fachstil}{\emph}
-%Expliziter Standard: leer
 \global\let\card@fach\@empty
 
 %english names
@@ -284,7 +238,7 @@
 \let\subjectstyle=\fachstil
 
 %
-% Kommentar (Standard vorne rechts)
+% Kommentar
 % Comment
 \newcommand{\derkommentar}[1]{%
 \ifx\@empty#1%
@@ -295,7 +249,6 @@
 }
 \newcommand{\kommentar}[1]{\def\card@kommentar{#1}}%
 \newcommand{\kommentarstil}{\emph}
-% Expluiziter Standard : leer
 \global\let\card@kommentar\@empty
 
 %english names
@@ -306,104 +259,123 @@
 \newcommand{\commentstyle}{}
 \let\commentstyle=\kommentarstil
 
-
+% Card Counter
 \newcounter{CardID}
 \renewcommand{\theCardID}{\emph{\# \arabic{CardID}}}
 
 \makeatletter
-% Section wird nun für Fächer verwendet
-% Dazu wird zunächst die alte Section gesichert
+% redefine section
 \newcommand{\origsection}{}
 \let\origsection=\section
-%
-% Makro nun neu definieren:
-\def\section{\@ifstar\unnumberedsection\numberedsection} 
-\def\numberedsection#1{%
+\def\section{\@ifstar\card@unnumberedsection\card@numberedsection}
+\def\card@unnumberedsection#1{%
+	\fach{#1}%
+  \ifcard@useTOC% only include these if toc is active
+	\card@addsec{}{#1}
+  \fi%
+}%
+\def\card@numberedsection#1{%
 	\refstepcounter{section}%
 	\fach{\thesection.\ #1}%
-%	\addcontentsline{toc}{section}{\protect\numberline{\thesubsection}{#1}}}
+  \ifcard@useTOC% only include these if toc is active
+	\card@addsec{\thesection.}{#1}
+  \fi%
 }%
 \def\unnumberedsection#1{%
 	\fach{#1}%
-%	\addcontentsline{toc}{section}{#1}}%
+	\card@addsec{}{#1}
 }%
 
-% Subsection wird nun für das Kommentarfeld verwendet
-% Dazu wird zunächst die alte Subsection gesichert
+% redefine subsectiom
 \newcommand{\origsubsection}{}
 \let\origsubsection=\subsection
-% Zähler nur auf subseciton setzen
 %
-% Makro nun neu definieren:
-\def\subsection{\@ifstar\unnumberedsubsection\numberedsubsection} 
-\def\numberedsubsection#1{%
-	\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
-	\refstepcounter{subsection}%
-	\kommentar{\thesubsection.\ #1}}%
-	\def\unnumberedsubsection#1{%
-	\renewcommand{\thesubsection}{\arabic{subsection}}%
-	\kommentar{#1}%
+\def\subsection{\@ifstar\card@unnumberedsubsection\card@numberedsubsection}
+\def\card@numberedsubsection#1{%
+  \renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+  \refstepcounter{subsection}%
+  \kommentar{\thesubsection. #1}
+  \ifcard@useTOC% only include these if toc is active
+    \card@addsubsec{\thesubsection.}{#1}
+  \fi%
 }%
-%
-% Pagestyle commands
-%
-\def\cardtitleheader{}%
-\def\cardRearheader{\theCardID\hfill\dieantwort\hfill}%
-\def\cardtitlefooter{}%
-\def\cardRearfooter{}%
-
-%
-%	Karteikartenumgebung:
-%	#1 (optional) Kopfzeile vorne Links : Fach
-% 	#2 Titel der Vorderseite  	
-% 	#3 (optional) Kopfzeile vorne rechts : Kommentar
+\def\card@unnumberedsubsection#1{%
+  \renewcommand{\thesubsection}{\arabic{subsection}}%
+  \kommentar{#1}%
+  \ifcard@useTOC% only include these if toc is active
+    \card@addsubsec{#1}
+  \fi%
+}
+%    Karteikartenumgebung:
+%  #1 (optional) Kopfzeile vorne Links : Fach
+%  #2 Titel der Vorderseite
+%  #3 (optional) Kopfzeile vorne rechts : Kommentar
 %
 \newenvironmentx{karte}[3][1=\card@fach,3=\card@kommentar]
-{% Vor der Umgebung: Vorderseite bauen
- %
+{%
+\refstepcounter{CardID}
+  % Add a TOC-line if active
+  \ifcard@useTOC% only include these if toc is active
+    \card@add{\arabic{CardID}}{#2}%
+  \fi%
+  % Build Cover page before starting environment
+  %
 \cohead{\theCardID}
 \lohead{\dasfach{#1}}
 \rohead{\derkommentar{#3}}
 \thispagestyle{scrheadings}
 ~\vfill{~\hfill \parbox[t]{.9\textwidth}{\centering \Large #2}\hfill~}\vfill~
-\refstepcounter{CardID}
 \newpage%
-}% Ende Vor der Umgebung
-{% Nach Umgebung: Warnung im Kaop (bis TODO gelöst) 
- % und neue Karteikarte auf ungerader Seite beginnen lassen
- %
+}% Start os usual content block
+{% Build a warning if the page is too full (forcing a pagebreak)
+ % assure the next card starts on an odd page by doublepagebreak
 \cohead{{\bfseries Achtung:} R\"uckseite von \theCardID\ ist zu voll.}%
 \rohead{}%
 \lohead{}%
 	~\cleardoublepage
 }
+\newcommand{\card@printTOC}{
+\ifcard@useTOC % only include these if toc is active
+  \ifcard@useprint
+%    \pgfshipoutphysicalpage
+    \pgfpagesuselayout{resize to}[a4paper]
+	\newpage
+    \KOMAoptions{paper=a4,DIV=13}
+	\setlength{\pdfpagewidth}{21cm}
+	\setlength{\textwidth}{17.5cm}
+	\setlength{\pdfpageheight}{29.7cm}
+  \else
+    \KOMAoptions{paper=a4,DIV=13}
+  \fi
+  \thispagestyle{empty}
+  \card@makeTOC
+\fi
+}
+
 %
 % Init and Endstuff...
 %
-\AtBeginDocument{
-}
-\makeatother
+\AtBeginDocument{\setcardpagelayout}
 %
 % finally set the layout, if print was given this sets to the just defined 8on2
 %
+\AtEndDocument{\card@printTOC}
+\makeatother
+%
+%
+% Init
 \antwort{Antwort}
-% using pagestyle
-\setcardpagelayout
-\AtEndDocument{%
-%
-% TODO Tabelle aller Karten?
-%
-}
 \pagestyle{scrheadings}
 \clearscrheadings
 \lohead{Kartentitel}
 \cohead{\theCardID}
 \lehead{\theCardID}
 \cehead{\dieantwort}%
-\setheadsepline{.4pt}[\color{black}] 
-
+\setheadsepline{.4pt}[\color{black}]
 %
 % Border Definitions
 %
 \tikzset{front grid/.style={very thin, gray}}
 \tikzset{rear grid/.style={thin, black, loosely dashed}}
+%
+\setcardpagelayout
