@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage[version=3]{mhchem}
 \usepackage{preview}
+\usepackage{gensymb}
 \let\oldce\ce
 \renewcommand*{\ce}[1]{\begingroup\color{red}\oldce{#1}\endgroup}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -197,7 +198,7 @@
 		}
 		
 
-		\begin{figure}
+		\begin{figure}[htbp]
 			\centering
 			\includegraphics[width=0.5\linewidth]{./images/07_Na2}
 			\caption[Na2]{$Na_2: [K][K]  (2s \sigma_g)^2 (2s \sigma_u)^2  (2 \sigma \pi_u)^6 (2 \sigma \pi_g)^6 (3s \sigma_g)^2  $}
@@ -213,7 +214,7 @@
 		Diskutieren Sie die Bindung im $\ce{Li2}$ und $\ce{CH4}$ Molekül.
 		}
 		
-		\begin{figure}
+		\begin{figure}[htbp]
 			\centering
 			\includegraphics[width=0.3\linewidth]{./images/08_Li2}
 			\caption[Li2]{$Li_2: [K][K]  (1s \sigma_g)^2 (1s \sigma_u)^2  (2s \sigma_g )^2   $}
@@ -228,7 +229,7 @@
 		Diskutiere die chemische Bindung im $\ce{B2}$ Modell.
 		}
 		
-		\begin{figure}
+		\begin{figure}[htbp]
 			\centering
 			\includegraphics[width=0.3\linewidth]{./images/09_B2}
 			\caption[Li2]{$B_2: [K][K]  (2s \sigma_g)^2 (2s \sigma_u)^2  (2p \pi_u )^2   $}
@@ -361,32 +362,40 @@
 		Wovon hängt die Intensität bei einem elektronischen Übergang ab?
 		}
 		
-		Da die Übergangswahrscheinlichkeit $ \propto |\vec{M_{ik}}|^2 $ ist, ist die Intensität $ I \propto |\vec{M_{ik}^{el}|^2 FC(v_i, v_k) HL(J_i, J_k)  $. \\
+		Da die Übergangswahrscheinlichkeit $ \propto |\vec{M_{ik}}|^2 $ ist, ist die Intensität $ I \propto |\vec{M_{ik}^{el}}|^2 FC(v_i, v_k) HL(J_i, J_k)  $. 
+		\\
 		Wobei die einzelnen Faktoren folgendes sind: \\
-		
 		\begin{itemize}
-			\item Der elektronische Anteil $ |\vec{M_{ik}}|^2 $ der die Wahrscheinlichkeit für einen Elektronenübergang von $ | i > $ nach $ |k> $ angibt. Dieser Teil hängt vom Überlapp der elektronischen Wellenfunktion ab.
-			
+			\item Der elektronische Anteil $ |\vec{M_{ik}} |^2 $ der die Wahrscheinlichkeit für einen Elektronenübergang von $ | i > $ nach $ |k> $ angibt. Dieser Teil hängt vom Überlapp der elektronischen Wellenfunktion ab.
 			\item Der Frank-Condon-Faktor
 			$$  FC(v_i,v_j) = \left|    \int  \psi_{vib}(v_i)    \psi_{vib}(v_k)  dR  \right| ^2     $$
 			der gleich dem Absolutquadrat des Überlapps der Schwingungswellenfunktionen im oberen und unteren Zustand ist.
-			
 			\item Der Hönl-London-Faktor
 			$$   HL(  J_i, J_k  )  =  \left|    \int Y_{J_{i}}^{ M_i }    Y_{J_{k}}^{ M_k } \vec{p} \sin(\theta) d\theta d\phi    \right|^2    $$
 			der gleich dem Absolutquatrat des Überlapps der Rotationswellenfunktionen im oberen und unteren Zustand ist.
-			
 		\end{itemize}
-		
 		Bem.: Nur wenn keiner der Faktoren 0 ist kann ein elektronischer Überlapp stattfinden.
-		
 	\end{karte}
-
-
+	
+	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 	\begin{karte}{
 		Franck-Condon-Prinzip und Intensität des Schwingungsüberganges.
 		}
 		
+		Die Absorbtion/Emission eines Photons und damit ein Übergang zwischen Zuständen passiert in einer Zeit, die klein ist gegenüber der Schwingungsdauer der Kerne. Dadurch erfolgt der Übergang im Energie/Kernabstand Diagramm senkrecht. Nun ist die Wahrscheinlichkeit für einen Übergang abhängig vom Fanck-Condon-Faktor:
+		$$  FC(v_i, v_j) = \left|   \int  \Psi_{ vib } (v_i)  \Psi_{ vib } (v_k)  dR    \right|^2   $$
+		
+		Wenn jetzt die Potentialkurven im oberen und unteren Zustand ähnlich sind und die Minima bei gleichen Kernabstand liegen, sind Übergänge $ \Delta v = v'- v''= 0 $ am wahrscheinlichsten. Sind aber die Potentialkurven zu einander verschoben sind Übergänge $ \Delta v \neq 0 $ am wahrscheinlichsten und haben damit die größte Intensität. Je größer die Verschiebung zwischen den Potentialkurven desto größer werden die wahrscheinlichsten $\Delta v$.
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=0.4\linewidth]{./images/17_FCP}
+			\caption{Franck-Condon-Prinzip}
+			\label{fig:17_FCP}
+		\end{figure}
 		
 		
 	\end{karte}
@@ -397,7 +406,20 @@
 		Diskutiere den Aufbau eines $\ce{H2O}$ Molekül.
 		}
 		
+		Beim Wassermolekül stehen folgende Orbitale für Bindungen zur Verfügung: \\
+		$  2 \times \ce{H} = 1s  $ \\
+		$  1 \times \ce{O} = [K] 2s^2 2p_x^1 2p_y^1 2p_z^2  $ \\
+		Wenn man nun den Ansatz mit Spin macht, dass bei 2 der $ \ce{O} $-Orbitale (z.B.: $p_x$, $p_y$) sich ein \ce{H} Atom bindet, kommt man auf einen Bindungswinkel von $90\degree$.
+		Experimente zeigen aber einen Bindungswinkel von $105\degree$. Also kann dieses einfache Modell nicht ganz korrekt sein. \\
 		
+		Die Erklärung ist, dass sich die Elektronenhüllen der Atome bei der Bindung verformen und es dadurch zu einer veränderten Ladungsverteilung und einem größeren Überlapp der Wellenfunktionen kommt. Es bilden sich sogenante Hypbridorbitale für die die Bindungsenergie zwischen $\ce{H}$ und $\ce{O}$ maximal und die Gesamtenergie minimal wird. Dieser Ansatz erklärt auch den Bindugswinkel von $105\degree$.
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=0.2\linewidth]{./images/18_CH4}
+			\caption{$\ce{CH4}$ Molekül , $109.5\degree$ }
+			\label{fig:18_CH4}
+		\end{figure}
 		
 	\end{karte}
 
