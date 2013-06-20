@@ -184,12 +184,12 @@
 % Load toc Commands
 %
 \ifcard@useTOC
-  \input{kartei.tableofcontents}
+  \input{kartei/kartei.tableofcontents}
 \fi
 %
 % Load print Commands
 \ifcard@useprint%
-  \input{kartei.print}
+  \input{Kartei/kartei.print}
 \fi%
 %
 % -----------------

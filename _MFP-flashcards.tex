@@ -10,6 +10,7 @@
 \usepackage{graphicx}
 \usepackage[version=3]{mhchem}
 \usepackage{gensymb}
+\usepackage{enumitem} 
 \let\oldce\ce
 \renewcommand*{\ce}[1]{\begingroup\color{red}\oldce{#1}\endgroup}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -616,7 +617,19 @@
 		Unterschied starres / zeitlich veränderliches Gitter.
 		}
 		
-		
+		\begin{itemize}
+			\item starre Gitter \\
+				Streudichte $\rho(\vec{r})$ zeitunabhängig\\
+				Zeitabhängigkeit in der Streuamplitude enthält nur die Frequenz $\omega_0$ \\
+				erspricht im quantenmechanischem Bild die Energieerhaltung \\
+				nur elastische Streuung, für die Strukturanalyse wichtig
+				
+			\item zeitlich veränderliches Gitter \\
+				Streudichte $ \rho( \vec{r},t ) $ zeitabhängig \\
+				ergeben sich auch Streuwellen mit $ \omega \neq \omega_0 $ \\
+				inelastische Streuung
+				
+		\end{itemize}
 		
 	\end{karte}
 
@@ -626,19 +639,67 @@
 		Definition und Vorteile des reziproken Gitters.
 		}
 		
-		
+		\begin{itemize}
+			\item Definition \\
+				Ein 3-dimensionales Punktgitter wird durch drei Basisvektoren $\vec {a_1}$, $\vec {a_2}$ und $\vec {a_3}$ beschrieben. Dieses Gitter wird auch reales oder direktes Gitter genannt. Die Basisvektoren des zu diesem Gitter reziproken Gitters $\vec {b_1}$, $\vec {b_2}$ und $\vec {b_3}$ ergeben sich aus den Gleichungen: \\
+				$ b_1 = 2 \pi \frac{  a_2 \times a_3  }{ a_1 \cdot ( a_2 \times a_3 ) } $
+				$ b_2 = 2 \pi \frac{  a_3 \times a_1  }{ a_1 \cdot ( a_2 \times a_3 ) } $
+				$ b_3 = 2 \pi \frac{  a_1 \times a_2  }{ a_1 \cdot ( a_2 \times a_3 ) } $
+				
+			\item Vorteile 
+				\begin{itemize}
+					\item Streubedingung bei periodischen Strukturen
+					\item wichtig für Beschreibung von Beugungsexperimenten
+				\end{itemize}
+		\end{itemize}
 		
 	\end{karte}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
-		Erkäre die Laue-Bedingung mit \\
-		a) Ewaldschen Konstruktion \\
-		b) Bragg-Reflexion.
+		Erkäre die Laue-Bedingung mit
+		\begin{enumerate}[label={\alph*)}] 
+			\item Ewaldschen Konstruktion
+			\item Bragg-Reflexion 
+		\end{enumerate}
 		}
 		
+		Lauer Bedingung: $  \vec{K} = \vec{k} - \vec{k_0} = \vec{G}  $ \\
+		Man erhält genau dann konstruktive Interferenz, wenn die Änderung des Wellenvektors beim Streuprozess einem reziproken Gittervektor entspricht.
+		\begin{enumerate}[label={\alph*)}] 
+			\item Ewaldschen Konstruktion
+				\begin{itemize}
+					\item zeichne das reziproke Gitter
+					\item zeichne den Wellenvektor der einfallenden Strahlung $\vec{k}$, so dass die Spitze von k auf einen Gitterpunkt endet
+					\item zeichne eine Kugel mit Radius k
+					\item die Laue-Bedingung ist nur für die Gitterpunkte erfüllt, die an der Kugeloberfläche liegen
+				\end{itemize}
+			\item Bragg-Reflexion
+				\begin{itemize}
+					\item Laue: $ n \lambda = d \sin(\alpha) $ 
+					\item Bragg: $n \lambda = 2d \sin(\theta) $
+				\end{itemize}
+		\end{enumerate}
 		
+		\begin{figure}[htdp]%
+			\centering
+			\begin{minipage}{0.15\textwidth}%
+				\centering%
+				\includegraphics[width=\textwidth]%
+				{./images/29_Ewald}
+				\caption{Ewald}
+			\end{minipage}%
+			\hspace{0.5cm}
+			%
+			\begin{minipage}{0.23\textwidth}%
+				\centering
+				\includegraphics[width=\textwidth]%
+				{./images/29_bragg}
+				\caption{Bragg}
+			\end{minipage}%
+			%
+		\end{figure}
 		
 	\end{karte}
 
@@ -648,7 +709,13 @@
 		Skizziere die Brillouinschen-Zonen eines Parallelogrammgitters.
 		}
 		
+		beschreiben symmetrische Polyeder im reziproken Gitter.
 		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=0.45\linewidth]{./images/30_parallel}
+			\caption{Brillouin Zonen eines Parallelogrammgitters}
+		\end{figure}
 		
 	\end{karte}
 
@@ -658,7 +725,13 @@
 		Skizziere die Brillouinsche Zone eines 2D hexagonalen Gitters.
 		}
 		
+		beschreiben symmetrische Polyeder im reziproken Gitter.
 		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=0.45\linewidth]{./images/31_hex}
+			\caption{Brillouin Zonen eines 2D hexagonalen Gitters}
+		\end{figure}
 		
 	\end{karte}
 
@@ -668,7 +741,9 @@
 		Strukturfaktor / Atomfaktor.
 		}
 		
+		Der Atomfaktor $f_\alpha$ beschreibt die Stärke der Streuung an einem Atom. \\ \\
 		
+		Der Strukturfaktor beschreibt die Interferenz zwischen Streuwellen von verschiedenen Atomen der Elementarzelle.
 		
 	\end{karte}
 
@@ -678,7 +753,23 @@
 		Unterschiede im Strukturfaktor im einfachen kubischen und im bcc-Gitter?
 		}
 		
-		
+		\begin{itemize}
+			\item einfach kubisch
+				$$   F_{hkl} = 
+				\begin{cases}
+					f_1 + f_2 & \mbox{für } h+k+l \mbox{ gerade}\\
+					f_1 - f_2 &  \mbox{für } h+k+l \mbox{ ungerade}
+				\end{cases}
+				$$
+			\item body-centered cubic (bcc)
+				$$   F_{hkl} = 
+				\begin{cases}
+					2f	&	\mbox{für } h+k+l \mbox{ gerade}\\
+					0	&	\mbox{für } h+k+l \mbox{ ungerade}
+				\end{cases}
+				$$
+				es kommt zur (totalen) Auslöschung bestimmter Reflexe im bcc Gitter!
+		\end{itemize}
 		
 	\end{karte}
 
@@ -688,7 +779,17 @@
 		Was führt zum Auslöschen bestimmter Reflexe in eimen bcc?
 		}
 		
+		Die Auslöschungsregel des bcc Gitters ist geometrisch leicht zu verstehen. \\
 		
+		Die roten Atome kommen dazu - wir haben einfach doppelt so viele, aus Sicht des Kristalls identische Ebenen, wie im simplen kubischen Gitter. \\
+		
+		Die an den roten Atomen der zusätzlichen Ebenen reflektierte Welle ist genau in Antiphase zur Welle eins drüber und wird also immer für Auslöschung sorgen.
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=0.45\linewidth]{./images/33_bcc}
+			\caption{Auslöschung bei bcc Gitter}
+		\end{figure}
 		
 	\end{karte}
 
@@ -698,7 +799,7 @@
 		Dispersionsrelation einer zweiatomigen linearen Kette. (Phononendispersion)
 		}
 		
-		
+		AAAAAARGH!!! \\
 		
 	\end{karte}
 
@@ -708,7 +809,28 @@
 		Unterschied akustische und optische Phononen.
 		}
 		
+		Phononen: Quasiteilchen, delokalisiert, existieren im ganzen Gitter
 		
+		\begin{itemize}
+			\item akustische Phononen
+				\begin{itemize}
+					\item entsprechen Schallwellen, die sich im Kristallgitter fortplanzen
+					\item alle Atome einer Basis schwingen in Phase
+				\end{itemize}
+			\item optische Phononen 
+				\begin{itemize}
+					\item gegenphasige Bewegung
+					\item Schwingung im Infrarotbereich
+					\item Festkörper ncht zwingend optisch aktiv
+					\item Beispiel: Ionengitter ($\ce{NaCl}$ Kristall)
+				\end{itemize}
+		\end{itemize}
+		
+		\begin{figure}[htbp]
+			\centering
+			\includegraphics[width=0.3\linewidth]{./images/36_phononen}
+			\caption{Unterschied akustische und optische Phononen}
+		\end{figure}
 		
 	\end{karte}
 
@@ -716,10 +838,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{karte}{
 		Wodurch unterscheiden sich die Dispersionsrelationen für Phononen im primitiv 
-		kubischen Gitter und der $\ce{CsCl}$ Struktur (bcc kub. raumzentriert.)?
+		kubischen Gitter und der $\ce{CsCl}$ Struktur (bcc kubisch raumzentriert.)?
 		}
 		
-		
+		\begin{itemize}
+			\item jeder Kristall hat 3 akkustische Zweige
+			\item für jedes zusätzliche Atom in Einheitszelle kommen 3 optische Zweige dazu
+			\item primitiv kubisch (sc)
+				\begin{itemize}
+					\item 1 Atom/EZ $\Rightarrow$ 3 akkustische Zweige
+				\end{itemize}
+			\item kubisch raumzentriert (bcc)
+				\begin{itemize}
+					\item 2 Atom/EZ $\Rightarrow$ 3 akkustische Zweige + 3 optische Zweige
+				\end{itemize}
+		\end{itemize}
 		
 	\end{karte}
 
@@ -729,6 +862,12 @@
 		Zustandsdichte vom freien Elektronengases?
 		}
 		
+		Die Zustandsdichte $D(E)$ gibt die Zahl der möglichen Energiezustände pro Energieeinheit an. \\
+
+		\begin{itemize}
+			\item 1D:  $  D(E) = \frac{L}{2\pi} \left( \frac{2m}{\hbar^2} \right)^{3/2} \frac{1}{\sqrt{E}}   $
+			\item 3D:  $  D(E) = \frac{V}{2\pi^2} \left( \frac{2m}{\hbar^2} \right)^{3/2} \sqrt{E}   $
+		\end{itemize}
 		
 		
 	\end{karte}
@@ -739,7 +878,19 @@
 		Fermi-Verteilung für T = 0K und bei endlichen Temperaturen.
 		}
 		
+		Die Fermi-Verteilung gibt an, mit welcher Wahrscheinlichkeit ein Fermion (z.B. ein Elektron) bei einer gegebenen Temperatur $T$ einen Zustand mit der Energie $E$ besetzen kann.
 		
+		\begin{itemize}
+			\item $T=0K$ \\
+				Das Pauli-Prinzip besagt, dass Fermionen nicht in allen Quantenzahlen übereinstimmen dürfen. Dies hat zur Folge, dass auch am absoluten Temperaturnullpunkt Fermionen in angeregten Energiezuständen sitzen müssen. \\
+				Die Fermi-Verteilung hat bei $T=0K$ also eine scharfe Kante bei einer Energie, deren Höhe von der Anzahl der Fermionen in dem betrachteten System abhängt und als Fermi-Kante oder Fermi-Energie $E_f$ bezeichnet wird. Ganz wichtig ist hierbei, dass die Fermi-Verteilung nur eine Wahrscheinlichkeit angibt, mit der ein Zustand besetzt wird. Ob der Zustand auch besetzt wird, hängt davon ab, ob ein entsprechender Zustand existiert \\
+				$$f(E,T=0K)= \begin{cases}
+					1 & \mbox{Alle Zustände unter der Fermi-Energie sind mit Fermionen besetzt} \\
+					0 & \mbox{Zustände oberhalb der Fermi-Energie sind nicht von Fermionen besetzt}
+				\end{cases}$$
+			\item $T>0K$ \\
+				$$f(E,T) = \frac{ 1 }{  \exp \left( \frac{ E- \mu }{k_B T} \right) + 1   } $$
+		\end{itemize}
 		
 	\end{karte}
 
@@ -749,7 +900,7 @@
 		Entstehung elektronischer Bänder im Festkörper.
 		}
 		
-		
+		Im Festkoörper wechselwirken eine Vielzahl von Elektronen miteinander, wodurch immer mehr Energieniveaus entstehen, die als Energiebänder zusammengefasst werden.
 		
 	\end{karte}
 
@@ -760,7 +911,7 @@
 		(”tight binding“ Näherung)
 		}
 		
-		
+		ääähm…
 		
 	\end{karte}
 
@@ -770,7 +921,11 @@
 		Wovon hängt die Breite von elektronischen Bändern ab?
 		}
 		
-		
+		Die Breite hängt vom Überlapp der benachbarten Wellenfunktionen ab. Diese wiederum hängt von der Lokalisierung ab:
+		\begin{itemize}
+			\item lokalisiert $\Rightarrow$ schmale Bänder
+			\item delokalisiert $\Rightarrow$ breite Bänder
+		\end{itemize}
 		
 	\end{karte}
 
@@ -780,7 +935,11 @@
 		Wann ist ein Festkörper Leiter bzw. Nichtleiter?
 		}
 		
+		Wenn die Fermi-Energie innerhalb eines Energiebandes liegt sind nicht alle Energiezustände in diesem Band besetzt.
 		
+		Damit könne Elektronen beim Anlegen einer Spannung Energie aufnehmen und sich in Richtung des elktrischen Feldes bewegen.
+		
+		Diese Festkörper sind elektrische Leiter.
 		
 	\end{karte}
 
