@@ -28,7 +28,6 @@
 *.out
 *.synctex.gz
 *.tex.bak
-*.pdf
  
 # Mac IDE files
 *.swp
